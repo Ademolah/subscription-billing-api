@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongodb
+
+  plan-service:
+    build: ./plan-service
+    ports:
+      - "3002:3000"
+    depends_on:
+      - mongodb
+
+  billing-service:
+    build: ./billing-service
+    ports:
+      - "3003:3000"
+    depends_on:
+      - mongodb
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "3004:3000"
+    depends_on:
+      - mongodb
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "3005:3000"
+    depends_on:
+      - mongodb
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - plan-service
+      - billing-service
+      - payment-service
+      - notification-service
+
+volumes:
+  mongo_data:
