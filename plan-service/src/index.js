@@ -1,8 +1,11 @@
 const express = require('express')
 const planRoutes = require('./routes/plan-routes.js')
+const db = require('./db/plan-db.js')
 
 
 const app = express()
+
+db()
 
 app.use(express.json())
 
