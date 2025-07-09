@@ -3,7 +3,7 @@ const {makePayment, paymentHistory} = require('../controllers/payment-controller
 const express = require('express')
 const router = express.Router()
 
-router.post('/payment', makePayment)
+router.post('/makePayment', makePayment)
 router.get('/fetchPayment', paymentHistory)
 
 
