@@ -46,7 +46,7 @@ async function updatePlans(req, res){
         const planToUpdate = await Plan.findByIdAndUpdate(id, req.body, {new: true})
 
         if(!planToUpdate){
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No plan found"
             })
         }
@@ -71,7 +71,7 @@ async function getSinglePlan(req, res){
         const plan = await Plan.findById(id)
 
         if(!plan){
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No plan found"
             })
         }
@@ -93,7 +93,7 @@ async function deletePlan(req, res){
         const planToDelete = await Plan.findByIdAndDelete(id)
 
         if(!planToDelete){
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No plan found"
             })
         }
