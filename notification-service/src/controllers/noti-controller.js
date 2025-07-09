@@ -1,5 +1,3 @@
-const nodemailer = require('nodemailer')
-const Notification = require('../models/noti-models.js')
 const { transporter } = require('../helpers/helper.js')
 
 async function sendEmail(req, res){
@@ -12,7 +10,27 @@ async function sendEmail(req, res){
             text
         })
 
+        res.status(200).json({
+            message: 'Message sent successfully'
+        })
+
     } catch (error) {
-        
+        res.status(500).json({ error: err.message });
     }
 }
+
+
+//webhook
+async function webhook(req, res){
+    try{
+        console.log('Webhook received ', req.body)
+        res.status(200).json({
+            message: 'Webhook recieved'
+        })
+    } catch(error){
+        res.status(500).json({ error: err.message });
+    }
+}
+
+
+module.exports = {sendEmail, webhook}
