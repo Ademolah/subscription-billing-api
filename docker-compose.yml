@@ -13,7 +13,7 @@ services:
     build: ./user-service
     container_name: user-service
     ports:
-      - "3001:3000"
+      - "3005:3000"
     depends_on:
       - mongodb
 
@@ -21,7 +21,7 @@ services:
     build: ./plan-service
     container_name: plan-service
     ports:
-      - "3002:3000"
+      - "3004:3000"
     depends_on:
       - mongodb
 
@@ -29,7 +29,7 @@ services:
     build: ./billing-service
     container_name: billing-service
     ports:
-      - "3003:3000"
+      - "3001:3000"
     depends_on:
       - mongodb
 
@@ -37,7 +37,7 @@ services:
     build: ./payment-service
     container_name: payment-service
     ports:
-      - "3004:3000"
+      - "3003:3000"
     depends_on:
       - mongodb
 
@@ -45,7 +45,7 @@ services:
     build: ./notification-service
     container_name: notification-service
     ports:
-      - "3005:3000"
+      - "3002:3000"
     depends_on:
       - mongodb
 
