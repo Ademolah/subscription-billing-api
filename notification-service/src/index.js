@@ -11,6 +11,6 @@ app.use(express.json())
 
 app.use('api/v1/notification', notifyRoutes)
 
-app.listen(3005, ()=>{
+app.listen(3002, ()=>{
     console.log('Notification server listening on port 3005')
 })

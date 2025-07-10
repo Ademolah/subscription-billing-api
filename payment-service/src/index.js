@@ -13,6 +13,6 @@ app.use('/api/v1/payment', paymentRoute)
 
 
 
-app.listen(3004, ()=>{
+app.listen(3003, ()=>{
     console.log('Payment server now listening on port 3004')
 })
