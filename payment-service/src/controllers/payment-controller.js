@@ -19,7 +19,8 @@ async function makePayment(req, res){
 
         res.status(200).json({
             success:true,
-            message: 'Payment made successfully'
+            message: 'Payment made successfully',
+            newPayment
         })
 
         await publish('payment.success', {
@@ -50,7 +51,7 @@ async function paymentHistory(req, res){
         })
         
     } catch (error) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: error.message });
     }
 }
 

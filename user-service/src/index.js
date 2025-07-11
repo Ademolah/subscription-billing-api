@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const connectDb = require('./db/db.js')
 const userRoute = require('./routes/user-routes.js')
@@ -15,6 +16,6 @@ app.use('/api/v1/users', userRoute)
 
 
 
-app.listen(3005, ()=>{
-    console.log('App now listening on port 3000');
+app.listen(4005, ()=>{
+    console.log('App now listening on port 4005');
 })

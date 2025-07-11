@@ -25,6 +25,8 @@ async function createPlans(req, res){
 
         await newService.save()
 
+        console.log('Plan created succesfully!')
+
         res.status(201).json({
             success: true,
             message: 'New plan created ',

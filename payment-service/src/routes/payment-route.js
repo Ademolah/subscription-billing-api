@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 router.post('/makePayment', makePayment)
-router.get('/fetchPayment', paymentHistory)
+router.get('/fetchPayment/:userId', paymentHistory)
 
 
 module.exports = router

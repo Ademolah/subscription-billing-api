@@ -4,10 +4,18 @@ const jwt = require('jsonwebtoken')
 
 async function getUsers(req, res){
     try{
+        const users = await User.find({})
 
+        res.status(200).json({
+            success: true,
+            users
+        })
 
     }catch(error){
-
+        res.status(500).json({
+            success: false,
+            error
+        })
     }
 }
 
@@ -44,6 +52,8 @@ async function registerUsers(req, res){
             newUser
         })
 
+        console.log('register user...')
+
 
     } catch (error) {
         res.status(500).json({
@@ -77,7 +87,7 @@ async function login(req, res){
         }
 
         //create access token
-        const accessToken = await jwt.sign({
+        const accessToken =  jwt.sign({
             userId : user._id,
             first_name: user.first_name,
             last_name: user.last_name,
@@ -94,7 +104,7 @@ async function login(req, res){
     }catch (error){
         res.status(500).json({
             success: false,
-            error
+            message:error.message
         })
     }
 }
@@ -129,6 +139,7 @@ async function currentUser(req, res){
             })
         }
 }
+
 
 
 

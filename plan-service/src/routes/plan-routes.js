@@ -7,7 +7,7 @@ router.get('/getPlans', listPlans)
 router.post('/createPlans', createPlans)
 router.put('/update/:id', updatePlans)
 router.delete('/delete/:id', deletePlan)
-router.get('/getSinglePlan/:id', )
+router.get('/getSinglePlan/:id', getSinglePlan )
 
 
 module.exports = router
