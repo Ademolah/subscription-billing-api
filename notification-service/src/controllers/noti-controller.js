@@ -1,4 +1,4 @@
-const { transporter } = require('../helpers/helper.js')
+const { transporter } = require('../utility/helper.js')
 
 async function sendEmail(req, res){
     try {
@@ -19,6 +19,24 @@ async function sendEmail(req, res){
     }
 }
 
+async function paymentEmail(req, res){
+    try {
+        const {messageFrom, messageTo, subject, text} = req.body
+        await transporter.sendMail({
+            from: messageFrom, 
+            to: messageTo,
+            subject,
+            text
+        })
+
+        res.status(200).json({
+            message: 'Message sent successfully'
+        })
+    } catch (error) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 
 //webhook
 async function webhook(req, res){
@@ -33,4 +51,4 @@ async function webhook(req, res){
 }
 
 
-module.exports = {sendEmail, webhook}
+module.exports = {sendEmail, webhook, paymentEmail}

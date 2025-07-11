@@ -1,4 +1,5 @@
 const Billing = require('../models/billing-models.js')
+const { publish } = require('../helpers/rabbitmq.js')
 
 async function subscribe(req, res){
     try {
@@ -24,6 +25,12 @@ async function subscribe(req, res){
             success: true,
             message: 'New Plan created successfully',
             newPlan
+        })
+
+        await publish('user.subscribed', {
+            userId,
+            planId,
+            subscribedAt: new Date()
         })
         
     } catch (error) {

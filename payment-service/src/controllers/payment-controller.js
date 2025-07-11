@@ -1,4 +1,5 @@
 const Payment = require('../models/payment-models.js')
+const { publish } = require('../helpers/rabbitmq.js')
 
 async function makePayment(req, res){
     try {
@@ -20,6 +21,14 @@ async function makePayment(req, res){
             success:true,
             message: 'Payment made successfully'
         })
+
+        await publish('payment.success', {
+            userId,
+            planId,
+            amount,
+            paidAt: new Date()
+        })
+
     } catch (error) {
         res.status(500).json({ error: err.message });
     }
