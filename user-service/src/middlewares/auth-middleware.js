@@ -21,7 +21,6 @@ async function authMiddleware(req, res, next){
         console.log(decodedToken)
         req.userInfo = decodedToken
 
-
         next()
         
     } catch (error) {

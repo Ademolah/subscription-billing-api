@@ -39,7 +39,7 @@ async function cancelSubscription(req, res){
     try{
         const {userId, planId} = req.body
 
-        const sub = await Billing.findOne({userId, planId, isActive: false})
+        const sub = await Billing.findOne({userId, planId, isActive: true})
 
         if(!sub){
             return res.status(404).json({

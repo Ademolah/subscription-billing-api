@@ -14,5 +14,5 @@ app.use('/api/v1/plans', billingRoutes)
 
 
 app.listen(3001, ()=>{
-    console.log('Billing service now listening on port 3003'); 
+    console.log('Billing service now listening on port 3001'); 
 })

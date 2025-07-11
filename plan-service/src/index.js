@@ -15,6 +15,5 @@ app.use('/api/v1/plans', planRoutes)
 
 
 app.listen(3004, ()=>{
-    console.log('Plan service is listening on port 3001');
-    
+    console.log('Plan service is listening on port 3004')
 })
